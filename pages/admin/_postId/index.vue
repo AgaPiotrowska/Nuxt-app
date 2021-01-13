@@ -15,6 +15,7 @@
     components: {
       AdminPostForm
     },
+    layout: 'admin',
     data() {
       return {
       loadedPost: {
