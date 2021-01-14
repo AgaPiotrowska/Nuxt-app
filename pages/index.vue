@@ -3,17 +3,16 @@
     <section class="intro">
       <h1>Get the latest tech news!</h1>
     </section>
-      <PostList
-      :posts="loadedPosts"/>
+    <PostList :posts="loadedPosts" />
   </div>
 </template>
 
 <script>
-  import PostList from '~/components/Posts/PostList.vue'
+  import PostList from "@/components/Posts/PostList";
 
   export default {
     components: {
-      PostList: PostList
+      PostList
     },
     asyncData(context, callback) {
       setTimeout(() => {
@@ -21,22 +20,31 @@
           loadedPosts: [
             {
               id: "1",
-              title: "First post",
-              previewText: "This is our first post",
-              thumbnail: "https://static.pexels.com/photos/270348/pexels-photo-270348.jpeg"
+              title: "First Post",
+              previewText: "This is our first post!",
+              thumbnail:
+                "https://static.pexels.com/photos/270348/pexels-photo-270348.jpeg"
             },
             {
               id: "2",
-              title: "Second post",
-              previewText: "This is our second post",
-              thumbnail: "https://static.pexels.com/photos/270348/pexels-photo-270348.jpeg"
+              title: "Second Post",
+              previewText: "This is our second post!",
+              thumbnail:
+                "https://static.pexels.com/photos/270348/pexels-photo-270348.jpeg"
             }
           ]
         });
       }, 1500);
-      }
-  }
+    },
+    // data() {
+    //   return {
+    //     loadedPosts: []
+    //   };
+    // },
+    created() {}
+  };
 </script>
+
 
 <style scoped>
   .intro {
@@ -44,7 +52,7 @@
     position: relative;
     padding: 30px;
     box-sizing: border-box;
-    background-image: url('~assets/images/main-page-background.jpg');
+    background-image: url("~assets/images/main-page-background.jpg");
     background-position: center;
     background-size: cover;
   }
@@ -70,4 +78,12 @@
     }
   }
 
+  .featured-posts {
+    display: flex;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
 </style>
