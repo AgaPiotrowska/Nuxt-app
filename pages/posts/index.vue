@@ -38,9 +38,11 @@
           return data
         })
         .catch(e => {
-        context.error(new Error())
-      })
-
+        context.error(e)
+      });
+    },
+    created() {
+      this.$store.dispatch('setPosts', this.loadedPosts)
     }
   };
 </script>
