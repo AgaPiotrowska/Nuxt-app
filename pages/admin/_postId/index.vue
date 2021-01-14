@@ -11,7 +11,6 @@
 
 <script>
   import AdminPostForm from "@/components/Admin/AdminPostForm";
-  import axios from "axios";
 
   export default {
     layout: "admin",
@@ -19,15 +18,15 @@
       AdminPostForm
     },
     asyncData(context) {
-      return axios
-        .get(
+      return context.app.$axios
+        .$get(
           "https://nuxt-blog-bbd17-default-rtdb.firebaseio.com/posts/" +
           context.params.postId +
           ".json"
         )
-        .then(res => {
+        .then(data => {
           return {
-            loadedPost: {...res.data, id: context.params.postId}
+            loadedPost: {...data, id: context.params.postId}
           }
         })
         .catch(e => context.error());
