@@ -27,20 +27,17 @@
         )
         .then(res => {
           return {
-            loadedPost: res.data
+            loadedPost: {...res.data, id: context.params.postId}
           }
         })
         .catch(e => context.error());
     },
     methods: {
       onSubmitted(editedPost) {
-        axios.put("https://nuxt-blog-bbd17-default-rtdb.firebaseio.com/posts/" +
-        this.$route.params.postId +
-        ".json", editedPost)
-        .then(res => {
+        this.$store.dispatch('editPost', editedPost)
+        .then(() => {
           this.$router.push('/admin')
         })
-        .catch(e => console.log(e))
       }
     }
   };
