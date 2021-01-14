@@ -22,7 +22,7 @@
   };
 </script>
 
- 
+
 <style scoped>
   .intro {
     height: 300px;
