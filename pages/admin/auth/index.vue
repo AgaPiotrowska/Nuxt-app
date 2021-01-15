@@ -28,15 +28,19 @@
     },
     methods: {
       onSubmit() {
-        this.$axios.$post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=" +
-          process.env.fbAPIKey, {
-          email: this.email,
-          password: this.password,
-          returnSecureToken: true
-        }).then(result => {
+        let authUrl= 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[AIzaSyCkSNAYxkEjTD_1rM1w9X0ixelR3A0yqRE]'
+        if(!this.isLogin) {
+          authUrl = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[AIzaSyCkSNAYxkEjTD_1rM1w9X0ixelR3A0yqRE]'
+        }
+        this.$axios.$post(authUrl,
+        {
+            email: this.email,
+            password: this.password,
+            returnSecureToken: true
+          }).then(result => {
           console.log(result)
         })
-        .catch(e => console.log(e))
+          .catch(e => console.log(e))
       }
     }
   }
